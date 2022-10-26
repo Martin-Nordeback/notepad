@@ -20,6 +20,7 @@ public class NewNoteActivity extends AppCompatActivity {
     EditText noteHeader;
     EditText noteContent;
     File noteFolder;
+    AdapterNotes adapter;
 
 
     @Override
@@ -35,7 +36,7 @@ public class NewNoteActivity extends AppCompatActivity {
         goBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO lägga till en toast eller varning om att dina ändringar inte sparats typ?
+                //TODO lägga till en toast/varning om att dina ändringar inte sparats typ?
                 finish();
             }
         });
@@ -88,6 +89,10 @@ public class NewNoteActivity extends AppCompatActivity {
             e.printStackTrace();
             Toast.makeText(NewNoteActivity.this, "Failed to save note, try again!", Toast.LENGTH_LONG).show();
         }
+
+        //adapter method to make the change to mainactivity
+        adapter.notifyDataSetChanged();
+
 
     }
 

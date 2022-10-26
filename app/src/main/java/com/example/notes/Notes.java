@@ -17,7 +17,9 @@ public class Notes {
         this.timeDate = timeDate;
     }
 
-    //TODO få bin och timedate att funka i denna konstruktorn
+    //TODO få delete att funka i denna konstruktorn
+    //TODO få timedate att funka i denna konstruktorn
+
     public Notes(String noteHeader, String noteContent) {
         this.noteHeader = noteHeader;
         this.noteContent = noteContent;

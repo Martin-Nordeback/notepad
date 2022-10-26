@@ -41,9 +41,7 @@ public class MainActivity extends AppCompatActivity {
         adapter = new AdapterNotes(getApplicationContext(), notesArrayList);
         noteLists.setAdapter(adapter);
 
-        //TODO varje gång en anteckning sparas ska adaptern uppdateras
-        //TODO onResume när man går fram och tillbaka
-
+        //TODO kommentera alla kod + xml
 
 
         noteLists.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -57,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         newNoteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,9 +78,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
     }
+
 
 
 
@@ -96,24 +92,21 @@ public class MainActivity extends AppCompatActivity {
             String noteHeader;
             String noteContent = "";
 
+
             try {
                 //System.out.println(f.getName());
                 noteHeader = f.getName();
-                //TODO få bort .txt på alla inlästa filer
-                noteHeader.replace(".txt", "");
-                //System.out.println(noteHeader);
                 FileReader fileReader = new FileReader(f);
                 BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-                // Här kan du läsa innehållet hur du vill, med en StringBuilder t.ex.
                 String line;
                 while ((line = bufferedReader.readLine()) != null) {
                     noteContent += line;
                     //System.out.println(noteContent);
                 }
-                Notes namn = new Notes(noteHeader, noteContent);
-                notesArrayList.add(namn);
-
+                //here in the printer we replace the .txt in each document
+                Notes name = new Notes(noteHeader.replace(".txt",""), noteContent);
+                notesArrayList.add(name);
 
 
             } catch (IOException e) {
