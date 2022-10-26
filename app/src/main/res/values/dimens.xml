@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="small_font">10sp</dimen>
+    <dimen name="small_text_font">16sp</dimen>
+    <dimen name="medium_font">20sp</dimen>
+    <dimen name="large_font">30sp</dimen>
+
+    <dimen name="padding_header">8dp</dimen>
+    <dimen name="padding_card">8dp</dimen>
+
+    <dimen name="margin_default">24dp</dimen>
+    <dimen name="margin_top">12dp</dimen>
+
+    <dimen name="margin_right">24dp</dimen>
+</resources>
