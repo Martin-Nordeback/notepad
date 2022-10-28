@@ -15,8 +15,8 @@
         <!--Place holder for users note name-->
         <TextView
             android:id="@+id/text_view_header"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150sp"
+            android:layout_height="35sp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
             android:hint="@string/note_header"
@@ -30,7 +30,7 @@
         <!--Place holder for users note content-->
         <TextView
             android:id="@+id/text_view_content"
-            android:layout_width="wrap_content"
+            android:layout_width="150sp"
             android:layout_height="30dp"
             android:layout_marginBottom="4dp"
             android:hint="@string/note_content"
@@ -60,6 +60,7 @@
             android:layout_height="match_parent"
             android:textColor="@color/text_color"
             android:textSize="@dimen/small_font"
+            android:text="test"
             app:layout_constraintEnd_toEndOf="@+id/deleteBinButton"
             app:layout_constraintTop_toBottomOf="@+id/deleteBinButton"
             tools:text="@string/date_in_bar" />

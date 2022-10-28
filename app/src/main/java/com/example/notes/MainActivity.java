@@ -21,9 +21,11 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     ArrayList<Notes> notesArrayList = new ArrayList<>();
+    //public static final String MYNOTEPAD = "com.example.notes";
     ListView noteLists;
     AdapterNotes adapter;
-
+    //EditText noteHeader;
+    //EditText noteContent;
 
 
     @Override
@@ -38,8 +40,20 @@ public class MainActivity extends AppCompatActivity {
         FloatingActionButton newNoteButton = findViewById(R.id.floatingActionButton);
         readFromFile();
 
+
         adapter = new AdapterNotes(getApplicationContext(), notesArrayList);
         noteLists.setAdapter(adapter);
+
+        //TODO sätt gräns så noteheader & notecontent length()? som visas i custom_list_bar sedan ändra tbx wrap_content
+        //TODO om telefonen är wipead så crashar den för de finns ingen "file"  -prio
+        //TODO kunna öppna up antecklingarna som sparats -prio
+        //TODO kunna editera antecklingarna som sparats -prio
+        //TODO kod för att radera en anteckning -prio
+
+        //TODO fixa edittext färg custom_list_bar
+        //TODO koppla på delete bucket custom_list_bar
+        //TODO koppla på timestamp  custom_list_bar
+        //TODO kod för sökfältet
 
         //TODO kommentera alla kod + xml
 
@@ -47,14 +61,18 @@ public class MainActivity extends AppCompatActivity {
         noteLists.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+                String item = noteLists.getItemAtPosition(i).toString();
                 Intent intent = new Intent(MainActivity.this, NewNoteActivity.class);
-
                 Notes note = (Notes) adapterView.getItemAtPosition(i);
+                //intent.putExtra("text_content", note.noteContent);
                 intent.putExtra("text_content", note.noteContent);
+                //intent.putExtra(MYNOTEPAD, item);
                 startActivity(intent);
             }
+
         });
+
+
         newNoteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,21 +84,19 @@ public class MainActivity extends AppCompatActivity {
         //Search bar code
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public boolean onQueryTextSubmit(String s) {
-                adapter.getFilter().filter(s);
+            public boolean onQueryTextSubmit(String noteHeader) {
+                adapter.getFilter().filter(noteHeader);
                 return false;
             }
 
             @Override
-            public boolean onQueryTextChange(String s) {
-                adapter.getFilter().filter(s);
+            public boolean onQueryTextChange(String noteHeader) {
+                adapter.getFilter().filter(noteHeader);
                 return false;
             }
         });
 
     }
-
-
 
 
     private void readFromFile() {
@@ -92,9 +108,8 @@ public class MainActivity extends AppCompatActivity {
             String noteHeader;
             String noteContent = "";
 
-
             try {
-                //System.out.println(f.getName());
+                System.out.println(f.getName());
                 noteHeader = f.getName();
                 FileReader fileReader = new FileReader(f);
                 BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -102,10 +117,10 @@ public class MainActivity extends AppCompatActivity {
                 String line;
                 while ((line = bufferedReader.readLine()) != null) {
                     noteContent += line;
-                    //System.out.println(noteContent);
+                    System.out.println(noteContent);
                 }
                 //here in the printer we replace the .txt in each document
-                Notes name = new Notes(noteHeader.replace(".txt",""), noteContent);
+                Notes name = new Notes(noteHeader.replace(".txt", ""), noteContent);
                 notesArrayList.add(name);
 
 

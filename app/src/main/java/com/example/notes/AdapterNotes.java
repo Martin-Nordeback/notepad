@@ -14,7 +14,9 @@ import java.util.ArrayList;
 
 
 public class AdapterNotes extends ArrayAdapter<Notes> {
-
+    static final int MAX_TITLE_VIEW_LENGTH = 20;
+    static final int MAX_TITLE_ABSENT_VIEW_LENGTH = 10;
+    static final int MAX_CONTENT_VIEW_LENGTH = 15;
 
     public AdapterNotes (Context context, ArrayList<Notes> itemList) {
         super(context, R.layout.custom_list_bars, itemList);
@@ -33,8 +35,8 @@ public class AdapterNotes extends ArrayAdapter<Notes> {
 
         TextView noteHeader = convertView.findViewById(R.id.text_view_header);
         TextView noteContent = convertView.findViewById(R.id.text_view_content);
-       // ImageView bin = convertView.findViewById(R.id.deleteBinButton);
         TextView timeDate = convertView.findViewById(R.id.timeDateView);
+        // ImageView bin = convertView.findViewById(R.id.deleteBinButton);
         noteHeader.setText(note.noteHeader);
         noteContent.setText(note.noteContent);
         timeDate.setText((CharSequence) note.timeDate);
@@ -43,5 +45,6 @@ public class AdapterNotes extends ArrayAdapter<Notes> {
         //timeData
         return convertView;
     }
+
 
 }
