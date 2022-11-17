@@ -25,28 +25,31 @@
         app:layout_constraintTop_toBottomOf="@+id/backButton" />
 
     <!--Save button-->
+
+    <!--Note content multi textview-->
+
+    <!--New note button-->
+
     <Button
         android:id="@+id/saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="644dp"
+        android:layout_marginBottom="24dp"
         android:backgroundTint="@color/new_button"
         android:text="@string/save"
         android:textAllCaps="false"
         android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!--Note content multi textview-->
     <EditText
         android:id="@+id/editTextTextPersonName2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="368dp"
+        android:layout_height="440dp"
         android:layout_marginStart="8dp"
-        android:layout_marginBottom="408dp"
         android:ems="10"
         android:gravity="start|top"
         android:hint="@string/note_content"
@@ -56,12 +59,11 @@
         android:textSize="@dimen/small_text_font"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.071"
+        app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
         app:layout_constraintVertical_bias="0.0" />
 
-    <!--New note button-->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionBackButton"
         android:layout_width="wrap_content"
@@ -83,14 +85,14 @@
         android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:backgroundTint="@color/new_button"
         android:text="@string/back"
         android:textAllCaps="false"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

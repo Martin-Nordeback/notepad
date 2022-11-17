@@ -3,7 +3,7 @@
     <string name="new_note">+</string>
     <string name="main_header">Quick Notes</string>
     <string name="note_header">Note name....</string>
-    <string name="note_content">Content....</string>
+    <string name="note_content">Write here....</string>
     <string name="date_in_bar">Oct 23 2022</string>
     <string name="save">Save</string>
     <string name="back">Back</string>

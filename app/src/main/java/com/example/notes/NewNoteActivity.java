@@ -14,6 +14,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class NewNoteActivity extends AppCompatActivity {
 
@@ -21,8 +22,7 @@ public class NewNoteActivity extends AppCompatActivity {
     EditText noteContent;
     File noteFolder;
     AdapterNotes adapter;
-   // ArrayList<Notes> notesArrayList = new ArrayList<>();
-
+    ArrayList<Notes> notesArrayList = new ArrayList<>();
 
 
     @Override
@@ -33,63 +33,6 @@ public class NewNoteActivity extends AppCompatActivity {
         Button goBackButton = findViewById(R.id.backButton);
         Button saveNoteButton = findViewById(R.id.saveButton);
         FloatingActionButton newNoteButton = findViewById(R.id.floatingActionBackButton);
-
-//        noteHeader = findViewById(R.id.editTextTextPersonName);
-//        Intent intent = getIntent();
-//        final String message = intent.getStringExtra(MainActivity.MYNOTEPAD);
-//        noteHeader.setText(message);
-
-//        noteHeader = findViewById(R.id.editTextTextPersonName);
-//        noteContent = findViewById(R.id.editTextTextPersonName2);
-//
-//        String noteName = noteHeader.getText().toString();
-//        String noteContentIntent = noteContent.getText().toString();
-//
-//        noteHeader.setText(noteName);
-//        noteContent.setText(noteContentIntent);
-
-//        //för att hämta sparade intent
-//        //setTitle(getString(R.string.edit_item_title));
-//        Intent data = getIntent();
-//        final String value = data.getStringExtra("ItemValue");
-//        final int position = data.getIntExtra("ItemPosition", -1);
-//        final Button saveNoteButton = findViewById(R.id.saveButton);
-//        final Button goBackButton = findViewById(R.id.backButton);
-//        final EditText noteHeader = findViewById(R.id.editTextTextPersonName);
-//        final EditText noteContent = findViewById(R.id.editTextTextPersonName2);
-//        if (value != null){
-//            noteHeader.setText(value);
-//            noteContent.setText(value);
-//        }
-//        saveNoteButton.setEnabled(false);
-//        saveNoteButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                // Pass data back to main activity.
-//                Intent data = new Intent();
-//                data.putExtra("ItemPosition", position);
-//                data.putExtra("ItemValue", noteContent.getText().toString());
-//                // Notify calling activity the user accepted changes.
-//                setResult(RESULT_OK, data);
-//                savedNotesMethod();
-//
-//                // End execution.
-//                finish();
-//            }
-//        });
-//
-//        goBackButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                // Notify calling activity the user discarded changes.
-//                setResult(RESULT_CANCELED);
-//                // End execution.
-//                finish();
-//            }
-//        });
-
-        //ner hit
-
 
         goBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,7 +68,6 @@ public class NewNoteActivity extends AppCompatActivity {
         noteContent = findViewById(R.id.editTextTextPersonName2);
         //long createtime = System.currentTimeMillis();
 
-
         String noteName = noteHeader.getText().toString();
         String noteContentIntent = noteContent.getText().toString();
         //System.currentTimeMillis();
@@ -157,36 +99,19 @@ public class NewNoteActivity extends AppCompatActivity {
 
 
     }
-//    private void readFromFile() {
-//        File path = NewNoteActivity.this.getFilesDir();
-//        File fileFolder = new File(path, "Notes");
-//
-//        File[] files = fileFolder.listFiles();
-//        for (File f : files) {
-//            String noteHeader;
-//            String noteContent = "";
-//
-//            try {
-//                System.out.println(f.getName());
-//                noteHeader = f.getName();
-//                FileReader fileReader = new FileReader(f);
-//                BufferedReader bufferedReader = new BufferedReader(fileReader);
-//
-//                String line;
-//                while ((line = bufferedReader.readLine()) != null) {
-//                    noteContent += line;
-//                    System.out.println(noteContent);
-//                }
-//                //here in the printer we replace the .txt in each document
-//                Notes name = new Notes(noteHeader.replace(".txt", ""), noteContent);
-//                notesArrayList.add(name);
-//
-//
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        System.out.println(notesArrayList);
-//    }
 
+    public void saveNote (){
+        noteHeader = findViewById(R.id.editTextTextPersonName);
+        noteContent = findViewById(R.id.editTextTextPersonName2);
+
+        String noteName = String.valueOf(noteHeader.getText());
+        String noteContentIntent = String.valueOf(noteContent.getText());
+
+        int id = notesArrayList.size();
+
+
+        noteHeader.setText(noteName);
+        noteContent.setText(noteContentIntent);
+
+    }
 }

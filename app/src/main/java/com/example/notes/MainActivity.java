@@ -3,11 +3,10 @@ package com.example.notes;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.SearchView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -20,12 +19,9 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    RecyclerView recyclerView;
+    FloatingActionButton newNoteButton;
     ArrayList<Notes> notesArrayList = new ArrayList<>();
-    //public static final String MYNOTEPAD = "com.example.notes";
-    ListView noteLists;
-    AdapterNotes adapter;
-    //EditText noteHeader;
-    //EditText noteContent;
 
 
     @Override
@@ -33,44 +29,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SearchView searchView = findViewById(R.id.searchView);
-        noteLists = findViewById(R.id.listViewId);
+        //View
+        //SearchView searchView = findViewById(R.id.searchView);
+        recyclerView = findViewById(R.id.recycler_view);
+        newNoteButton = findViewById(R.id.floatingActionButton);
 
-
-        FloatingActionButton newNoteButton = findViewById(R.id.floatingActionButton);
+        //Display created notes
         readFromFile();
 
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
 
-        adapter = new AdapterNotes(getApplicationContext(), notesArrayList);
-        noteLists.setAdapter(adapter);
-
-        //TODO sätt gräns så noteheader & notecontent length()? som visas i custom_list_bar sedan ändra tbx wrap_content
-        //TODO om telefonen är wipead så crashar den för de finns ingen "file"  -prio
-        //TODO kunna öppna up antecklingarna som sparats -prio
-        //TODO kunna editera antecklingarna som sparats -prio
-        //TODO kod för att radera en anteckning -prio
-
-        //TODO fixa edittext färg custom_list_bar
-        //TODO koppla på delete bucket custom_list_bar
-        //TODO koppla på timestamp  custom_list_bar
-        //TODO kod för sökfältet
-
-        //TODO kommentera alla kod + xml
-
-
-        noteLists.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String item = noteLists.getItemAtPosition(i).toString();
-                Intent intent = new Intent(MainActivity.this, NewNoteActivity.class);
-                Notes note = (Notes) adapterView.getItemAtPosition(i);
-                //intent.putExtra("text_content", note.noteContent);
-                intent.putExtra("text_content", note.noteContent);
-                //intent.putExtra(MYNOTEPAD, item);
-                startActivity(intent);
-            }
-
-        });
+        AdapterNotes adapter = new AdapterNotes (notesArrayList, this);
+        recyclerView.setAdapter(adapter);
 
 
         newNoteButton.setOnClickListener(new View.OnClickListener() {
@@ -81,23 +52,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Search bar code
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String noteHeader) {
-                adapter.getFilter().filter(noteHeader);
-                return false;
-            }
 
-            @Override
-            public boolean onQueryTextChange(String noteHeader) {
-                adapter.getFilter().filter(noteHeader);
-                return false;
-            }
-        });
+        //Search bar
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String noteHeader) {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String noteHeader) {
+//                return false;
+//            }
+//        });
 
     }
-
 
     private void readFromFile() {
         File path = MainActivity.this.getFilesDir();
@@ -132,3 +101,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
+
+//TODO kunna öppna up antecklingarna som sparats -prio
+//TODO kunna editera antecklingarna som sparats -prio
+//TODO kod för att radera en anteckning -prio
+
+//TODO sätt gräns så noteheader & notecontent length()? som visas i custom_list_bar sedan ändra tbx wrap_content
+//TODO om telefonen är wipead så crashar den för de finns ingen "file"  -prio
+
+//TODO fixa edittext färg custom_list_bar
+//TODO fixa margin custom_list_bar
+//TODO koppla på delete bucket custom_list_bar
+//TODO koppla på timestamp  custom_list_bar
+//TODO kod för sökfältet
+//TODO få in material design
+
+//TODO kommentera alla kod + xml

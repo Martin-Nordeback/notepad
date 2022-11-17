@@ -7,20 +7,6 @@
     android:background="@color/default_background"
     tools:context=".MainActivity">
 
-    <!--Listview where users notes get shown-->
-    <ListView
-        android:id="@+id/listViewId"
-        android:layout_width="match_parent"
-        android:layout_height="600dp"
-        android:layout_marginTop="@dimen/margin_default"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView"
-        tools:listitem="@layout/custom_list_bars">
-
-    </ListView>
-
     <!-- Entery name of this application -->
     <TextView
         android:id="@+id/textView"
@@ -38,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <!--Search among your notes-->
-    <android.widget.SearchView
+    <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -67,6 +53,19 @@
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="0.973"
         app:srcCompat="@drawable/ic_baseline_add_24" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:scrollbars="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.021"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
